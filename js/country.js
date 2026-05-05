@@ -11,69 +11,82 @@ if (localStorage.getItem('theme') === 'dark') {
     if (modeLabel) modeLabel.textContent = 'Light Mode';
 }
 
-// 🔙 Back button
-backBtn.addEventListener('click', () => {
+// Back button
+backBtn?.addEventListener('click', () => {
     history.back();
 });
 
+loader?.classList.remove('hidden');
+countryDetails?.classList.add('hidden');
 
-// 1. Get country name from URL
 const params = new URLSearchParams(window.location.search);
 const countryName = params.get('name');
 
-// 2. Fetch that country only
-fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
-    .then(res => res.json())
-    .then(data => {
-    const country = data[0];
-    
-    // 3. Display details
-    countryDetails.innerHTML = `
-        <div class="country-info">
-            <div>
-                <img src="${country.flags.svg}" width="1000">
-            </div>
-            <div class="country-details-text">
-                <h2>${country.name.common}</h2>
-                <p><b>Official Name:</b> ${country.name.official}</p>
-                <p><b>Population:</b> ${country.population.toLocaleString()}</p>
-                <p><b>Region:</b> ${country.region}</p>
-                <p><b>Subregion:</b> ${country.subregion}</p>
-                <p><b>Capital:</b> ${country.capital}</p>
-                <p><b>Languages:</b> ${Object.values(country.languages || {}).join(', ')}</p>
-                <p><b>Currencies:</b> ${
-                Object.values(country.currencies || {})
-                    .map(c => c.name)
-                    .join(', ')
-                }</p>
-            </div>
-        </div>
-    `;
+function hideLoader() {
+    loader?.classList.add('hidden');
+}
 
-    // ⏳ Hide loader and show details
-    loader.classList.add('hidden');
-    countryDetails.classList.remove('hidden');
-    })
-    .catch(err => {
-        loader.classList.add('hidden');
-        console.error(err);
-    });
+function showError(message) {
+    hideLoader();
+    if (countryDetails) {
+        countryDetails.innerHTML = `<p>${message}</p>`;
+        countryDetails.classList.remove('hidden');
+    }
+}
+
+if (!countryName) {
+    showError('Country name is missing in the URL.');
+} else {
+    fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then(data => {
+            const country = data[0];
+            if (!country) {
+                throw new Error('Country not found');
+            }
+
+            countryDetails.innerHTML = `
+                <div class="country-info">
+                    <div class="country-flag">
+                        <img src="${country.flags.svg}" alt="Flag of ${country.name.common}">
+                    </div>
+                    <div class="country-details-text">
+                        <h2>${country.name.common}</h2>
+                        <p><b>Official Name:</b> ${country.name.official}</p>
+                        <p><b>Population:</b> ${country.population.toLocaleString()}</p>
+                        <p><b>Region:</b> ${country.region}</p>
+                        <p><b>Subregion:</b> ${country.subregion || 'N/A'}</p>
+                        <p><b>Capital:</b> ${country.capital?.[0] || 'N/A'}</p>
+                        <p><b>Languages:</b> ${Object.values(country.languages || {}).join(', ') || 'N/A'}</p>
+                        <p><b>Currencies:</b> ${
+                            Object.values(country.currencies || {})
+                                .map(c => c.name)
+                                .join(', ') || 'N/A'
+                        }</p>
+                    </div>
+                </div>
+            `;
+
+            hideLoader();
+            countryDetails.classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error(err);
+            showError('Error loading country details.');
+        });
+}
 
 
-darkModeToggle.addEventListener('click', (e) => {
+darkModeToggle?.addEventListener('click', (e) => {
     e.preventDefault();
     body.classList.toggle('dark');
     const isDark = body.classList.contains('dark');
-
-
-    if (body.classList.contains('dark')) {
-        modeLabel.textContent = 'Light Mode';
-    }else
-    {
-        modeLabel.textContent = 'Dark Mode';
-    }
-
-     // Save globally
+    modeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
