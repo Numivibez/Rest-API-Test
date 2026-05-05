@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/country.js" defer></script>
+</head>
+<body>
+
+    <header class="header-container">
+        <div class="header-content">
+            <button class="back-btn">← Back</button>
+            <button class="dark-mode">🌙 <span class="mode-label">Dark Mode</span></button>
+        </div>
+    </header>
+
+    <div class="loader">
+        <div class="spinner"></div>
+
+        <style>
+            .spinner {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            animation: spinner-plncf9 4s infinite;
+            }
+
+            .spinner::before,
+            .spinner::after {
+            content: "";
+            grid-area: 1/1;
+            border: 9px solid;
+            border-radius: 50%;
+            border-color: #4caf50 #4caf50 #0000 #0000;
+            mix-blend-mode: darken;
+            animation: spinner-plncf9 1s infinite linear;
+            }
+
+            .spinner::after {
+            border-color: #0000 #0000 #dbdcef #dbdcef;
+            animation-direction: reverse;
+            }
+
+            @keyframes spinner-plncf9 {
+                100% {
+                    transform: rotate(1turn);
+                }
+            }
+        </style>
+    </div>
+
+    <div class="country-details hidden">
+        <!-- <h1>Country Details</h1>
+        <img src="" alt="">
+        <p id="country-name"></p>
+        <p id="country-capital"></p>
+        <p id="country-population"></p> -->
+    </div>
+</body>
+</html>
