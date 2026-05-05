@@ -4,6 +4,12 @@ const modeLabel = document.querySelector('.mode-label');
 const darkModeToggle = document.querySelector('.dark-mode');
 const body = document.body;
 
+// Apply saved theme immediately
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark');
+  if (modeLabel) modeLabel.textContent = 'Light Mode';
+}
+
 fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital')
 .then((res)=> res.json())
 .then((data) =>{ 

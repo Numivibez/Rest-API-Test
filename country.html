@@ -16,47 +16,13 @@
         </div>
     </header>
 
-    <div class="loader">
-        <div class="spinner"></div>
+    <main class="country-page">
+        <div class="loader" aria-live="polite" aria-busy="true">
+            <div class="spinner" aria-hidden="true"></div>
+            <p class="loader-text">Loading country…</p>
+        </div>
 
-        <style>
-            .spinner {
-            width: 56px;
-            height: 56px;
-            display: grid;
-            animation: spinner-plncf9 4s infinite;
-            }
-
-            .spinner::before,
-            .spinner::after {
-            content: "";
-            grid-area: 1/1;
-            border: 9px solid;
-            border-radius: 50%;
-            border-color: #4caf50 #4caf50 #0000 #0000;
-            mix-blend-mode: darken;
-            animation: spinner-plncf9 1s infinite linear;
-            }
-
-            .spinner::after {
-            border-color: #0000 #0000 #dbdcef #dbdcef;
-            animation-direction: reverse;
-            }
-
-            @keyframes spinner-plncf9 {
-                100% {
-                    transform: rotate(1turn);
-                }
-            }
-        </style>
-    </div>
-
-    <div class="country-details hidden">
-        <!-- <h1>Country Details</h1>
-        <img src="" alt="">
-        <p id="country-name"></p>
-        <p id="country-capital"></p>
-        <p id="country-population"></p> -->
-    </div>
+        <div class="country-details hidden"></div>
+    </main>
 </body>
 </html>
