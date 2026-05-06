@@ -238,7 +238,7 @@ button:focus {
     grid-area: 1/1;
     border: 9px solid;
     border-radius: 50%;
-    border-color: #4caf50 #4caf50 #0000 #0000;
+    border-color: #111826 #111826 #312d2d00 #312d2d00;
     mix-blend-mode: darken;
     animation: spinner-rotate 1s infinite linear;
 }
