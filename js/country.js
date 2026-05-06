@@ -142,7 +142,7 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
         const country = data[0];
 
         countryDetails.innerHTML = `
-        <img src="${country.flags.svg}" width="300">
+        <img src="${country.flags.svg}" width="1000">
 
         <div>
             <h2>${country.name.common}</h2>

@@ -54,15 +54,32 @@ button:focus {
     box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
 }
 
+.back-btn,
+.dark-mode {
+    min-width: 124px;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: 700;
+}
+
 .back-btn {
-    background-color: #ffffff;
-    color: #333333;
-    border: 1px solid #d8d8d8;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: 1px solid #4caf50;
+}
+
+.back-btn:hover {
+    background-color: #45a049;
 }
 
 .dark-mode {
-    background-color: #212121;
+    background-color: #111827;
     color: #ffffff;
+    border: 1px solid #111827;
+}
+
+.dark-mode:hover {
+    background-color: #1f2937;
 }
 
 #search-btn {
@@ -71,9 +88,10 @@ button:focus {
 }
 
 .header-container{
-    box-shadow: 0 2px 4px 1px rgba(0,0,0,0.1);
-    padding-inline: 24px;
-
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .header-content{
@@ -82,8 +100,7 @@ button:focus {
     justify-content: space-between;
     max-width: 1300px;
     margin-inline: auto;
-    /* padding-inline: 24px; */
-    /* background-color: pink; */
+    gap: 16px;
 }
 
 .title{
@@ -190,7 +207,6 @@ button:focus {
 
 /* country css */
 .back-btn {
-    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -246,6 +262,7 @@ button:focus {
     max-width: 1100px;
     margin-inline: auto;
     padding: 32px 24px;
+    text-align: center;
 }
 
 .country-details {
@@ -255,6 +272,7 @@ button:focus {
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    text-align: center;
 }
 
 body.dark .country-details {
@@ -267,6 +285,8 @@ body.dark .country-details {
     grid-template-columns: 1.1fr 1fr;
     gap: 28px;
     align-items: start;
+    justify-content: center;
+    justify-items: center;
 }
 
 @media (max-width: 900px) {
@@ -290,11 +310,19 @@ body.dark .country-flag img {
     margin: 0 0 6px;
     font-size: clamp(28px, 3vw, 40px);
     line-height: 1.1;
+    text-align: center;
 }
 
 .country-subtitle {
     margin: 0 0 18px;
     opacity: 0.75;
+    text-align: center;
+}
+
+.country-details p,
+.country-details h2,
+.country-details h1 {
+    text-align: center;
 }
 
 .details-grid {
