@@ -171,35 +171,35 @@ button:focus {
 
 /* The text box */
 #search {
-  width: 300px;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  transition: 0.3s ease;
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: 0.3s ease;
 }
 
 /* Make the input glow when typing */
 #search:focus {
-  border-color: #4CAF50; /* green outline */
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    border-color: #4CAF50; /* green outline */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
 /* The search button */
 #search-btn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s ease;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 /* Button hover effect */
 #search-btn:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
 
